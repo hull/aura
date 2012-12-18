@@ -101,11 +101,6 @@ define(['aura_base'], function(base) {
     return obj instanceof Object;
   }
 
-  // Get the widgets path
-  core.getWidgetsPath = function() {
-    return WIDGETS_PATH;
-  };
-
   // Subscribe to an event
   //
   // * **param:** {string} channel Event name
@@ -212,6 +207,59 @@ define(['aura_base'], function(base) {
     emitQueue = [];
   };
 
+
+  core.widgets = {};
+
+  // Get the widgets path
+  core.widgets.getPath = function() {
+    return WIDGETS_PATH;
+  };
+
+
+  // Actual Widgets boot function
+
+  core.widgets.boot = function(widget, options) {
+    if (widget && typeof widget.init === 'function') {
+      return widget.init(options);
+    } else {
+      console.error("Error starting widget " + widget.name + ". Its main module must return a constructor function.", widget.init, options);
+    }
+  };
+
+  core.widgets.load = function(file, options) {
+    var dfd = core.data.deferred();
+    var widgetsPath = core.widgets.getPath();
+    var requireConfig = require.s.contexts._.config;
+
+    if (requireConfig.paths && requireConfig.paths.hasOwnProperty('widgets')) {
+      widgetsPath = requireConfig.paths.widgets;
+    }
+
+    require([widgetsPath + '/' + file + '/main'], function(main) {
+      try {
+        core.widgets.boot({ name: file, init: main, path: widgetsPath + '/' + file }, options || {});
+      } catch (e) {
+        console.error(e);
+      }
+      dfd.resolve();
+    }, function(err) {
+      if (err.requireType === 'timeout') {
+        console.warn('Could not load module ' + err.requireModules);
+      } else {
+        // If a timeout hasn't occurred and there was another module
+        // related error, unload the module then throw an error
+        var failedId = err.requireModules && err.requireModules[0];
+        require.undef(failedId);
+        throw err;
+      }
+      dfd.reject();
+    });
+
+    return dfd.promise();
+  };
+
+
+
   // Automatically load a widget and initialize it. File name of the
   // widget will be derived from the channel, decamelized and underscore
   // delimited by default.
@@ -241,45 +289,12 @@ define(['aura_base'], function(base) {
     var l = list.length;
     var promises = [];
 
-    function load(file, options) {
-      var dfd = core.data.deferred();
-      var widgetsPath = core.getWidgetsPath();
-      var requireConfig = require.s.contexts._.config;
-
-      if (requireConfig.paths && requireConfig.paths.hasOwnProperty('widgets')) {
-        widgetsPath = requireConfig.paths.widgets;
-      }
-
-      require([widgetsPath + '/' + file + '/main'], function(main) {
-        try {
-          main(options);
-        } catch (e) {
-          console.error(e);
-        }
-        dfd.resolve();
-      }, function(err) {
-        if (err.requireType === 'timeout') {
-          console.warn('Could not load module ' + err.requireModules);
-        } else {
-          // If a timeout hasn't occurred and there was another module
-          // related error, unload the module then throw an error
-          var failedId = err.requireModules && err.requireModules[0];
-          require.undef(failedId);
-          throw err;
-        }
-        dfd.reject();
-      });
-
-      return dfd.promise();
-    }
-
     isWidgetLoading = true;
 
     for (; i < l; i++) {
       var widget = list[i];
       var file = decamelize(widget.channel);
-
-      promises.push(load(file, widget.options || {}));
+      promises.push(core.widgets.load(file, widget.options || {}));
     }
 
     core.data.when.apply($, promises).done(core.emptyEmitQueue);
