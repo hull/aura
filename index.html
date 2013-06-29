@@ -22,7 +22,7 @@
     <link href="assets/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="assets/javascripts/modernizr.js" type="text/javascript"></script>
   </head>
-<body>
+<body data-spy="scroll" data-target=".navbar">
   <div class="header">
   <div id="particles"></div>
   <div class="hero-unit">
@@ -37,21 +37,28 @@
         </div>
       </div>
     </div>
-    <a class="button" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
-    <a class="button" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
-    <a class="button faded" href="https://github.com/aurajs/aura">View on Github</a>
+    <a class="button btn btn-link" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+    <a class="button btn btn-link" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
+    <a class="button btn btn-link faded" href="https://github.com/aurajs/aura">View on Github</a>
   </div>
 </div>
 
   <section class="container introduction">
-    <header class="row">
-      <div class='span3 offset1'>  <div class="nav-container" id="sidenav">
-    <ul class='nav nav-list'>
-      </li><li class='level_1'><a href="#aura-0-9pre">Aura 0.9pre</a><ul class='nav nav-list'><li class='level_2'><a href="#everything-is-a-widget">Everything is a widget</a></li><li class='level_2'><a href="#but-wait-my-widgets-have-to-communicate">But Wait: My Widgets Have to Communicate!</a></li><li class='level_2'><a href="#a-quick-example">A Quick Example</a></li><li class='level_2'><a href="#why-aura">Why Aura?</a></li><li class='level_2'><a href="#concepts">Concepts</a></li><li class='level_2'><a href="#getting-started">Getting started</a></li><li class='level_2'><a href="#creating-an-application">Creating an Application</a></li><li class='level_2'><a href="#creating-a-widget">Creating a Widget</a></li><li class='level_2'><a href="#declaring-a-widget">Declaring a Widget</a></li><li class='level_2'><a href="#creating-an-extension">Creating an extension</a></li><li class='level_2'><a href="#event-notifications">Event notifications</a></li><li class='level_2'><a href="#using-extensions">Using extensions</a></li><li class='level_2'><a href="#debugging">Debugging</a></li></ul></li><li class='level_1'><a href="#resources">Resources</a><ul class='nav nav-list'><li class='level_2'><a href="#yeoman-generator">Yeoman generator</a></li></ul></li><li class='level_1'><a href="#examples">Examples</a><ul class='nav nav-list'><li class='level_2'><a href="#github-client">GitHub client</a></li><li class='level_2'><a href="#github-mobile-client">GitHub Mobile client</a></li><li class='level_2'><a href="#hullagram">Hullagram</a></li><li class='level_2'><a href="#aura-todomvc">Aura TodoMVC</a></li><li class='level_2'><a href="#a-twitter-like-open-source-page-using-aura">A Twitter-like "Open Source" page using Aura.</a></li><li class='level_2'><a href="#writing-simple-github-widgets">Writing simple GitHub widgets</a></li></ul></li><li class='level_1'><a href="#faqs">FAQs</a></li><li class='level_1'><a href="#why-do-developers-use-us">Why do developers use us?</a></li><li class='level_1'><a href="#contribute">Contribute</a>
-    </ul>
+    <div class="row">
+      <div class="span3">
+          <div id="side_nav" class=" hidden-phone hidden-table" data-spy="affix" data-offset-top="355">
+    <div class="row">
+      <div class="span3">
+        <h5>&nbsp;</h5>
+        <ul class='nav accordion' id="accordion">
+          </li><li class='level_1 accordion-heading'><a href="#aura-0-9pre" class='accordion-toggle' data-toggle='collapse' data-parent='accordion' data-target='#accordion_1'>Aura 0.9pre</a><ul class='collapse' id='accordion_1'><li class='level_2 '><a href="#everything-is-a-widget" >Everything is a widget</a></li><li class='level_2 '><a href="#but-wait-my-widgets-have-to-communicate" >But Wait: My Widgets Have to Communicate!</a></li><li class='level_2 '><a href="#a-quick-example" >A Quick Example</a></li><li class='level_2 '><a href="#why-aura" >Why Aura?</a></li><li class='level_2 '><a href="#concepts" >Concepts</a></li><li class='level_2 '><a href="#getting-started" >Getting started</a></li><li class='level_2 '><a href="#creating-an-application" >Creating an Application</a></li><li class='level_2 '><a href="#creating-a-widget" >Creating a Widget</a></li><li class='level_2 '><a href="#declaring-a-widget" >Declaring a Widget</a></li><li class='level_2 '><a href="#creating-an-extension" >Creating an extension</a></li><li class='level_2 '><a href="#event-notifications" >Event notifications</a></li><li class='level_2 '><a href="#using-extensions" >Using extensions</a></li><li class='level_2 '><a href="#debugging" >Debugging</a></li></ul></li><li class='level_1 accordion-heading'><a href="#resources" class='accordion-toggle' data-toggle='collapse' data-parent='accordion' data-target='#accordion_2'>Resources</a><ul class='collapse' id='accordion_2'><li class='level_2 '><a href="#yeoman-generator" >Yeoman generator</a></li></ul></li><li class='level_1 accordion-heading'><a href="#examples" class='accordion-toggle' data-toggle='collapse' data-parent='accordion' data-target='#accordion_3'>Examples</a><ul class='collapse' id='accordion_3'><li class='level_2 '><a href="#github-client" >GitHub client</a></li><li class='level_2 '><a href="#github-mobile-client" >GitHub Mobile client</a></li><li class='level_2 '><a href="#hullagram" >Hullagram</a></li><li class='level_2 '><a href="#aura-todomvc" >Aura TodoMVC</a></li><li class='level_2 '><a href="#a-twitter-like-open-source-page-using-aura" >A Twitter-like "Open Source" page using Aura.</a></li><li class='level_2 '><a href="#writing-simple-github-widgets" >Writing simple GitHub widgets</a></li></ul></li><li class='level_1 accordion-heading'><a href="#faqs" class='accordion-toggle' data-toggle='collapse' data-parent='accordion' data-target='#accordion_4'>FAQs</a></li><li class='level_1 accordion-heading'><a href="#why-do-developers-use-us" class='accordion-toggle' data-toggle='collapse' data-parent='accordion' data-target='#accordion_5'>Why do developers use us?</a></li><li class='level_1 accordion-heading'><a href="#contribute" class='accordion-toggle' data-toggle='collapse' data-parent='accordion' data-target='#accordion_6'>Contribute</a>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
-      <div class="span6"><h1>Aura 0.9pre</h1>
+
+      </div>
+      <div class="span9"><h1>Aura 0.9pre</h1>
 
 <p><a href="https://travis-ci.org/aurajs/aura"><img alt="Build Status" src="https://travis-ci.org/aurajs/aura.png?branch=master" /></a></p>
 
@@ -181,16 +188,16 @@
 
 <p>Now we can place this widget everywhere in our app by using Aura&#39;s HTML API based on data-attributes.</p>
 
-<pre><code class="html">    &amp;lt;div data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;aurajs/aura&quot;&amp;gt;&amp;lt;&amp;#47;div&amp;gt;
+<pre><code class="html">    &amp;lt;div data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;aurajs/aura&quot;&amp;gt;&amp;lt;/div&amp;gt;
 </code></pre>
 
 <p>You can even have multiple instances of this widget in you page :</p>
 
 <pre><code class="html">    &amp;lt;div class=&#39;row&#39;&amp;gt;
-      &amp;lt;div class=&#39;span4&#39; data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;aurajs/aura&quot;&amp;gt;&amp;lt;&amp;#47;div&amp;gt;
-      &amp;lt;div class=&#39;span4&#39; data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;emberjs/ember.js&quot;&amp;gt;&amp;lt;&amp;#47;div&amp;gt;
-      &amp;lt;div class=&#39;span4&#39; data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;documentcloud/backbone&quot;&amp;gt;&amp;lt;&amp;#47;div&amp;gt;
-    &amp;lt;&amp;#47;div&amp;gt;
+      &amp;lt;div class=&#39;span4&#39; data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;aurajs/aura&quot;&amp;gt;&amp;lt;/div&amp;gt;
+      &amp;lt;div class=&#39;span4&#39; data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;emberjs/ember.js&quot;&amp;gt;&amp;lt;/div&amp;gt;
+      &amp;lt;div class=&#39;span4&#39; data-aura-widget=&quot;issues&quot; data-aura-repo=&quot;documentcloud/backbone&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
 </code></pre>
 
 <p>Any other widget can now emit issues.filter  events that these widgets will respond to.
@@ -308,11 +315,11 @@ This means that they know nothing about each other. To make them communicate, a 
 
 <p>For our &ldquo;hello&rdquo; widget the <code>main.js</code> will be:</p>
 
-<pre><code class="js">define({
-  initialize: function () {
-    this.$el.html(&#39;&lt;h1&gt;Hello Aura&lt;/h1&gt;&#39;);
-  }
-});
+<pre><code class="js">    define({
+      initialize: function () {
+        this.$el.html(&#39;&lt;h1&gt;Hello Aura&lt;/h1&gt;&#39;);
+      }
+    });
 </code></pre>
 
 <h2>Declaring a Widget</h2>
@@ -493,13 +500,11 @@ yo aura:styles
 
 <p><a href="https://github.com/sbellity/aura-github">Repo</a></p>
 
-<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png"  width="600px"/></p>
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png"/>
+<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app2.png"/></p>
 
-<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app2.png"  width="600px"/></p>
-
-<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app3.png"  width="600px"/></p>
-
-<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app4.png"  width="600px"/></p>
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app3.png"/>
+<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app4.png"/></p>
 
 <h2>GitHub Mobile client</h2>
 
@@ -512,8 +517,9 @@ yo aura:styles
 <p>An Instagram clone built with Aura and <a href="http://hull.io">Hull.io</a>.</p>
 
 <p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-1.png"/>
-<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-2.png"/>
-<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-3.png"/>
+<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-2.png"/></p>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-3.png"/>
 <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-4.png"/></p>
 
 <h2>Aura TodoMVC</h2>
@@ -563,7 +569,7 @@ yo aura:styles
 
 <p>See the <a href="https://github.com/aurajs/aura/blob/master/contributing.md">contributing docs</a></p>
 </div>
-    </header>
+    </div>
   </section>
   <footer>
     <section class="container">
@@ -588,7 +594,7 @@ yo aura:styles
 </section>
 
   </footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
   <script src="assets/javascripts/app.js" type="text/javascript"></script>
 </body>
 </html>
