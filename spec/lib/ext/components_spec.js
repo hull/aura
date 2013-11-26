@@ -116,9 +116,7 @@ define(['jquery', 'aura/aura', 'aura/ext/components'], function ($, aura, ext) {
 
         app = aura({ namespace: 'super' });
         app.start({ components: container }).done(function () {
-          setTimeout(function(){
-            done()
-        }, 10);
+          setTimeout(done, 10);
         });
       });
 
