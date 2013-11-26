@@ -5,7 +5,7 @@ require.config({
   baseUrl: '../',
   paths: {
     components      : 'components',
-    jquery          : 'bower_components/jquery/jquery',
+    zepto           : 'bower_components/zepto/zepto',
     aura            : 'lib',
     q               : 'bower_components/q/q',
     aura_components : 'spec/aura_components',

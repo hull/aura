@@ -1,14 +1,18 @@
-define(['jquery', 'aura/aura', 'aura/ext/components'], function ($, aura, ext) {
+define(['zepto', 'aura/aura', 'aura/ext/components'], function ($, aura, ext) {
   'use strict';
   /*global describe:true, it:true, beforeEach:true, before:true, alert:true, sinon:true */
-
+  var $ = Zepto;
   var appConfig = { components: { sources: { 'default' : 'spec/components' } } };
-  var appsContainer = $('<div>').attr('style', 'display:none');
-  $('body').append(appsContainer);
+  var appsContainer = document.createElement('div');
+  appsContainer.style.display = 'none';
+  document.getElementsByTagName('body')[0].appendChild(appsContainer);
 
   function buildAppMarkup(markup) {
-    var container = $('<div/>').attr('id', _.uniqueId('components_spec_')).html(markup);
-    appsContainer.append(container);
+    var div = document.createElement('div');
+    div.setAttribute('id',_.uniqueId('components_spec_'));
+    div.innerHTML = markup;
+    var container = $(div);
+    appsContainer.appendChild(div);
     return container;
   }
 
