@@ -283,7 +283,7 @@ define(['jquery', 'aura/aura', 'aura/ext/components'], function ($, aura, ext) {
               self.beforeInitializeCalled = true;
               dfd.resolve();
             }, 10);
-            return dfd.promise();
+            return dfd.promise;
           });
           app.components.after('initialize', function() {
             if (this.initializedCalled) {
