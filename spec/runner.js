@@ -4,11 +4,13 @@ var should;
 require.config({
   baseUrl: '../',
   paths: {
-    components: 'components',
-    aura: 'lib',
-    aura_components: 'spec/aura_components',
-    chai: 'node_modules/chai/chai',
-    sinonChai:'node_modules/sinon-chai/lib/sinon-chai'
+    components      : 'components',
+    jquery          : 'bower_components/jquery/jquery',
+    aura            : 'lib',
+    q               : 'bower_components/q/q',
+    aura_components : 'spec/aura_components',
+    chai            : 'node_modules/chai/chai',
+    sinonChai       :'node_modules/sinon-chai/lib/sinon-chai'
   }
 });
 

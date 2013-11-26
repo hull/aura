@@ -1,4 +1,4 @@
-define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
+define(['jquery', 'aura/aura', 'aura/ext/components'], function ($, aura, ext) {
   'use strict';
   /*global describe:true, it:true, beforeEach:true, before:true, alert:true, sinon:true */
 
@@ -78,7 +78,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
         var container = buildAppMarkup(markup);
 
         app = aura();
-        app.start({ components: container }).done(function () {
+        app.start({ components: container }).then(function () {
           setTimeout(done, 0);
         });
       });
@@ -116,7 +116,9 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
 
         app = aura({ namespace: 'super' });
         app.start({ components: container }).done(function () {
-          setTimeout(done, 0);
+          setTimeout(function(){
+            done()
+        }, 0);
         });
       });
 

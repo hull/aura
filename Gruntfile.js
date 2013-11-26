@@ -41,7 +41,6 @@ module.exports = function (grunt) {
           preserveLicenseComments: false,
           paths: {
             aura: 'lib',
-            jquery: 'empty:',
             underscore: 'empty:',
             eventemitter: 'bower_components/eventemitter2/lib/eventemitter2'
           },
@@ -57,7 +56,6 @@ module.exports = function (grunt) {
             'aura/ext/mediator',
             'aura/ext/components'
           ],
-          exclude: ['jquery'],
           out: 'dist/aura.js'
         }
       }
@@ -120,5 +118,5 @@ module.exports = function (grunt) {
 
   grunt.registerTask('spec', ['jshint', 'mocha']);
   grunt.registerTask('build', ['connect', 'spec', 'requirejs', 'concat']);
-  grunt.registerTask('default', ['connect', 'spec', 'watch']);
+  grunt.registerTask('default', ['connect', 'watch']);
 };

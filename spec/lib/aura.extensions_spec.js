@@ -1,4 +1,4 @@
-define(['aura/aura.extensions'], function (ExtManager) {
+define(['aura/aura.extensions', 'q'], function (ExtManager, Q) {
   'use strict';
   /*global describe:true, it:true, before:true, sinon:true */
 
@@ -37,7 +37,7 @@ define(['aura/aura.extensions'], function (ExtManager) {
         mgr.add(ext2);
 
         var init = mgr.init();
-        init.done(function () {
+        init.then(function () {
           ext1.ref.should.have.been.calledWith(ext1.context);
           ext2.ref.should.have.been.calledWith(ext2.context);
           done();
@@ -57,12 +57,12 @@ define(['aura/aura.extensions'], function (ExtManager) {
         var ctx = { foo: 'Bar' };
         var ext1 = {
           initialize: function (c) {
-            var later = $.Deferred();
+            var later = Q.defer();
             _.delay(function () {
               c.ext1Loaded = true;
               later.resolve();
             }, 100);
-            return later;
+            return later.promise;
           }
         };
         var ext2 = function (c) { c.ext1Loaded.should.equal(true); };
@@ -80,7 +80,8 @@ define(['aura/aura.extensions'], function (ExtManager) {
 
         define('myExt', ext);
         mgr.add({ ref: 'myExt', context: ctx });
-        mgr.init().done(function (extResolved) {
+        var init = mgr.init();
+        init.then(function (extResolved) {
           extResolved[0].foo.should.equal('bar');
           ext.initialize.should.have.been.calledWith(ctx);
           done();
@@ -130,19 +131,19 @@ define(['aura/aura.extensions'], function (ExtManager) {
       });
 
       it('Should call onFailure callbacks when init has failed', function (done) {
-        var onFail = sinon.spy();
+        var onFail    = sinon.spy();
         var genErr = new Error('FAIL');
         var mgr = new ExtManager().add({
           ref: {
             initialize: function () {
-              var dfd = $.Deferred();
+              var dfd = Q.defer();
               dfd.reject(genErr);
-              return dfd;
+              return dfd.promise;
             }
           }
         });
         mgr.onFailure(onFail);
-        mgr.init().always(function (err) {
+        mgr.init().fail(function (err) {
           err.should.be.equal(genErr);
           onFail.should.have.been.called;
           done();

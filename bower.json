@@ -11,10 +11,11 @@
     "url": "git://github.com/aurajs/aura.git"
   },
   "dependencies": {
-    "jquery": "~1.10.x",
     "underscore": "~1.5.x",
     "eventemitter2": "~0.4.11",
     "requirejs": "~2.1.4",
-    "requirejs-text": "~2.0.5"
+    "requirejs-text": "~2.0.5",
+    "q": "~0.9.7",
+    "jquery": "~2.0.3"
   }
 }
