@@ -79,7 +79,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
 
         app = aura();
         app.start({ components: container }).done(function () {
-          setTimeout(done, 0);
+          setTimeout(done, 10);
         });
       });
 
@@ -116,7 +116,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
 
         app = aura({ namespace: 'super' });
         app.start({ components: container }).done(function () {
-          setTimeout(done, 0);
+          setTimeout(done, 10);
         });
       });
 
@@ -172,7 +172,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
           // The promise resolves when the app is loaded...
           // not when the components are started...
           // TODO: what should we do ?
-          setTimeout(done, 0);
+          setTimeout(done, 10);
         });
       });
 
@@ -192,7 +192,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
         var parentComponent = makeSpyComponent('parent', {
           initialize: function() {
             this.html('<div data-aura-component="child"></div>');
-            setTimeout(done, 0);
+            setTimeout(done, 10);
           }
         });
 
@@ -219,7 +219,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
         // app start...
         var container = buildAppMarkup('<div data-aura-component="ext_component@anotherSource"></div>');
         app.start({ components: container }).done(function () {
-          setTimeout(done, 0);
+          setTimeout(done, 10);
         });
       });
 
@@ -245,7 +245,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
       before(function (done) {
         var container = buildAppMarkup('<div data-aura-component="ext_component@aSource"></div>');
         app = aura();
-        app.use(ext).start({ components: container }).done(function () { setTimeout(done, 0); });
+        app.use(ext).start({ components: container }).done(function () { setTimeout(done, 10); });
       });
 
       it('Should load the source via the extension', function () {
@@ -318,7 +318,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
         app.start({ components: false }).done(function () {
           mediator = app.core.mediator;
           sandbox = app.sandboxes.create();
-          setTimeout(done, 0);
+          setTimeout(done, 10);
         });
       });
 
