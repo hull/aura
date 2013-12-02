@@ -27,7 +27,7 @@ define(['aura/aura'], function (aura) {
       });
 
       it('Should have loaded its core dependencies', function () {
-        App.core.data.deferred.should.be.a('function');
+        App.core.promises.deferred.should.be.a('function');
       });
 
       it('Should have a public API', function () {
