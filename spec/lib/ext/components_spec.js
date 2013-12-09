@@ -274,7 +274,7 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
         app.use(function(app) {
           app.components.before('initialize', function() {
             var self = this;
-            var dfd = app.core.promises.deferred();
+            var dfd = app.core.data.deferred();
             setTimeout(function() {
               self.beforeInitializeCalled = true;
               dfd.resolve();
